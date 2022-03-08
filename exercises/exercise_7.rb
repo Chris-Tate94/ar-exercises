@@ -22,10 +22,17 @@ class Employee < ActiveRecord::Base
 
 end
 
-# class Store < ActiveRecord::Base
+class Store < ActiveRecord::Base
 
-#     validates :name, presence: 
-#     true
-#     valid
+    validates :name, presence: 
+    true
+    validates :name, length: {minimum: 3}
+    validates :annual_revenue, numericality: {greater_than: 0}
+end
 
-# end
+store = Store.create do |s|
+    s.name = "Bu"
+    s.annual_revenue = 300000
+    s.mens_apparel = true
+    s.womens_apparel = true
+end
